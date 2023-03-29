@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +15,16 @@ use App\Http\Controllers\HomeController;
 */
 
 
-Route::get('/{page}', [AdminController::class,'index']);
-
-Route::get('/home',  [HomeController::class, 'index'])->name('home');
-
 Route::get('/', function () {
-    return view('index');
-});
+    return view('home');
+})->middleware('web');
+ 
+Auth::routes();
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/{page}', [AdminController::class,'index']);
+   
+ });
+
+
+
+

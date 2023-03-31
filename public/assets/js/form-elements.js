@@ -13,6 +13,7 @@
 		return $rendered;
 	};
 })(window.jQuery);
+
 $(function() {
 	'use strict'
 	// Toggle Switches
@@ -24,6 +25,7 @@ $(function() {
 	$('#phoneMask').mask('(999) 999-9999');
 	$('#phoneExtMask').mask('(999) 999-9999? ext 99999');
 	$('#ssnMask').mask('999-99-9999');
+	$('#nidMask').mask('9999999999');
 	// Color picker
 	$('#colorpicker').spectrum({
 		color: '#17A2B8'

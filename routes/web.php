@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/{page}', [AdminController::class,'index']);
-   
+    Route::post('/updateProfile', [HomeController::class, 'updateProfile'])->name('update.profile');
  });
 
 

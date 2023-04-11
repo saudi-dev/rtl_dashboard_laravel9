@@ -13,15 +13,15 @@ class AdminController extends Controller
      */
     public function index($id)
     {
-        if(view()->exists($id)){
+        if (view()->exists($id)) {
             return view($id);
         }
-        else
-        {
-            return view('404');
-        }
+        // else
+        // {
+        //     return view('404');
+        // }
 
-     //   return view($id);
+        //   return view($id);
     }
 
     /**
@@ -89,4 +89,16 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect('/home');
+    }
+
 }
